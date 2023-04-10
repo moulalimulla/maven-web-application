@@ -1,6 +1,7 @@
-node{
+node{'node1'}
+{
     def mavenHome = tool name: "Maven 3.9.1"
-    properties([pipelineTriggers([pollSCM('* * * * *')])])
+   // properties([pipelineTriggers([pollSCM('* * * * *')])])
 stage('checkout')
 {
     git branch: 'development', credentialsId: '925b84b3-94c7-41cf-8ff7-3b8bf8258841', url: 'https://github.com/moulalimulla/maven-web-application.git'
