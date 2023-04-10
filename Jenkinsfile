@@ -9,21 +9,21 @@ stage('Build')
 {
     sh "${mavenHome}/bin/mvn clean package"
 }
-stage('sonarqubeexecutereport')
-{
-    sh "${mavenHome}/bin/mvn sonar:sonar"
-}
-stage('uploadartifactintonexus')
-{
-    sh "${mavenHome}/bin/mvn deploy"
-}
-stage('Deployartifactintotomcat')
-sshagent(['5dc6a685-d0d0-4bd1-8241-c472a686ca7c']) 
-{
-sh "scp -o StrictHostkeyChecking=no target/maven-web-application.war ubuntu@65.0.86.25:/opt/tomcat/webapps/"
-}
-stage('Mail')
-{
-    mail bcc: '', body: 'Sucess', cc: '', from: '', replyTo: '', subject: 'Pipeline', to: 'ms.moulali2159@gmail.com'
-}
+// stage('sonarqubeexecutereport')
+// {
+//     sh "${mavenHome}/bin/mvn sonar:sonar"
+// }
+// stage('uploadartifactintonexus')
+// {
+//     sh "${mavenHome}/bin/mvn deploy"
+// }
+// stage('Deployartifactintotomcat')
+// sshagent(['5dc6a685-d0d0-4bd1-8241-c472a686ca7c']) 
+// {
+// sh "scp -o StrictHostkeyChecking=no target/maven-web-application.war ubuntu@65.0.86.25:/opt/tomcat/webapps/"
+// }
+// stage('Mail')
+// {
+//     mail bcc: '', body: 'Sucess', cc: '', from: '', replyTo: '', subject: 'Pipeline', to: 'ms.moulali2159@gmail.com'
+// }
 }
